@@ -23,14 +23,16 @@ from response import read_csv
 from hashed import hash_json
 
 
-filename = input('Enter the path to the appended json, e.g: ./json_output/file.json ')
-output = input('Enter the path where you want your csv to be stored e.g: ./csv_output/filename.output.csv ')
+
 
 
 
 def output_csv():
     read_csv()
     hash_json()
+
+    filename = input('Enter the path to the appended json, e.g: ./json_output/file.json ')
+    output = input('Enter the path where you want your csv to be stored e.g: ./csv_output/filename.output.csv ')
 
     with open(filename) as json_file:
         json_data = json.load(json_file)
@@ -40,6 +42,7 @@ def output_csv():
 
     for data in json_data:
         if count == 0:
+            json_data = str(json_data)
             json_data = ast.literal_eval(json_data)
             header = data.keys()
             csv_writer.writerow(header)
