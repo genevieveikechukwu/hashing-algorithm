@@ -36,14 +36,15 @@ def output_csv():
 
     with open(filename) as json_file:
         json_data = json.load(json_file)
+        json_data = str(json_data)
+        eg = eval(json_data)
+        json_csv = eg
     data_file = open(output, 'w', newline='')
     csv_writer = csv.writer(data_file)
     count = 0
 
-    for data in json_data:
+    for data in json_csv:
         if count == 0:
-            json_data = str(json_data)
-            json_data = ast.literal_eval(json_data)
             header = data.keys()
             csv_writer.writerow(header)
             count += 1
