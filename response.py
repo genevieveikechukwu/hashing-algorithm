@@ -8,13 +8,14 @@ import json
 
 # setting the file path
 
-csvFilePath = './csv_input/t_csv_file_csv.csv'
-jsonpath = './json_output/file.json'
+
 
 
 # storing the data
 data = {}
 def read_csv():
+    csvFilePath = input('Enter the file path to your csv, e.g: ./csv_input/t_csv_file_csv.csv ')
+    jsonpath = input('Enter the path where the generated json will be stored e.g: ./json_output/file.json ')
     with open(csvFilePath, encoding='utf-8') as csvf:
         csvReader = csv.DictReader(csvf)
         for rows in csvReader:

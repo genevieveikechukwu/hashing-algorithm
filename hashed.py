@@ -2,11 +2,12 @@ import hashlib
 import json
 
 
-filename = './json_output/file.json'
+
 
 
 def hash_json():
-    with open('./json_output/file.json', 'rb') as f:
+    filename = input('Enter the path where the appended json will be stored e.g: ./json_output/file.json ')
+    with open(filename, 'rb') as f:
         for line in f:
             hashed_line ={ 'hash': hashlib.sha256(line.rstrip()).hexdigest() }
             # print(hashed_line)
@@ -19,7 +20,7 @@ def hash_json():
         data = json.load(file)
         data.update(entry)
     with open(filename, 'w') as file:
-        json.dump(data, file, indent=4)
+        json.dump(data, file, indent=4, sort_keys=True)
 
 hash_json()
 

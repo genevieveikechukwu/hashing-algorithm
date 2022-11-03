@@ -22,26 +22,30 @@ import ast
 from response import read_csv
 from hashed import hash_json
 
-csvFilePath = './csv_input/t_csv_file_csv.csv'
-jsonpath = './json_output/file.json'
-filename = './json_output/file.json'
-output = './csv_output/filename.output.csv'
 
-read_csv()
-hash_json()
+filename = input('Enter the path to the appended json, e.g: ./json_output/file.json ')
+output = input('Enter the path where you want your csv to be stored e.g: ./csv_output/filename.output.csv ')
 
-with open(filename) as json_file:
-    json_data = json.load(json_file)
-data_file = open(output, 'w', newline='')
-csv_writer = csv.writer(data_file)
-count = 0
 
-for data in json_data:
-    if count == 0:
-        json_data = ast.literal_eval(json_data)
-        header = data.keys()
-        csv_writer.writerow(header)
-        count += 1
-        csv_writer.writerow(data.values())
-        data_file.close()
+
+def output_csv():
+    read_csv()
+    hash_json()
+
+    with open(filename) as json_file:
+        json_data = json.load(json_file)
+    data_file = open(output, 'w', newline='')
+    csv_writer = csv.writer(data_file)
+    count = 0
+
+    for data in json_data:
+        if count == 0:
+            json_data = ast.literal_eval(json_data)
+            header = data.keys()
+            csv_writer.writerow(header)
+            count += 1
+            csv_writer.writerow(data.values())
+            data_file.close()
+            break
+output_csv()
 
