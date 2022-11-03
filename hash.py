@@ -2,20 +2,34 @@ import hashlib
 import json
 
 
-jsonpath = './output/file.json'
+filename = './json_output/file.json'
 
-with open('./output/file.json', 'rb') as f:
-    for line in f:
-        hashed_line ={ 'hash': hashlib.sha256(line.rstrip()).hexdigest() }
-        # print(hashed_line)
-with open('./output/file.json','r+') as file:
-    z = json.load(file)
-    z.update(hashed_line)
-    added_field = json.dumps(z, indent = 4)
 
-with open(jsonpath, 'w',  encoding='utf-8') as jsonFile:
-#     # adding enugh spaces for readability.
-    jsonFile.write(json.dump(added_field))
+def hash_json():
+    with open('./json_output/file.json', 'rb') as f:
+        for line in f:
+            hashed_line ={ 'hash': hashlib.sha256(line.rstrip()).hexdigest() }
+            # print(hashed_line)
+
+    entry = hashed_line 
+# entry = [hashed_line]
+# print(entry)
+
+    with open(filename, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+        data.update(entry)
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=4)
+
+hash_json()
+
+
+    
+
+
+
+
+
 
     # print(added_field)
     # print(added_field)
