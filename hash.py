@@ -15,7 +15,7 @@ with open('./output/file.json','r+') as file:
 
 with open(jsonpath, 'w',  encoding='utf-8') as jsonFile:
 #     # adding enugh spaces for readability.
-    jsonFile.write(json.dumps(added_field))
+    jsonFile.write(json.dump(added_field))
 
     # print(added_field)
     # print(added_field)
