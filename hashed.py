@@ -6,21 +6,21 @@ import json
 
 
 def hash_json():
-    filename = input('Enter the path where the appended json will be stored e.g: ./json_output/file.json ')
+    filename = './json_output/all-teams.txt'
     with open(filename, 'rb') as f:
         for line in f:
             hashed_line ={ 'hash': hashlib.sha256(line.rstrip()).hexdigest() }
             # print(hashed_line)
 
-    entry = hashed_line 
+    # entry = hashed_line 
 # entry = [hashed_line]
 # print(entry)
 
-    with open(filename, 'r', encoding='utf-8') as file:
+    with open(filename, 'r') as file:
         data = json.load(file)
-        data.update(entry)
+        data.update(hashed_line)
     with open(filename, 'w') as file:
-        json.dump(data, file, indent=4, sort_keys=True)
+        json.dump(data, file)
 
 hash_json()
 

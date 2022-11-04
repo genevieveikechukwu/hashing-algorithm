@@ -12,21 +12,22 @@ import json
 
 
 # storing the data
-data = {}
+
 def read_csv():
-    csvFilePath = input('Enter the file path to your csv, e.g: ./csv_input/t_csv_file_csv.csv ')
-    jsonpath = input('Enter the path where the generated json will be stored e.g: ./json_output/file.json ')
-    with open(csvFilePath, encoding='utf-8') as csvf:
+    csvFilePath = './csv_input/nft-all-teams.csv'
+    jsonpath = './json_output/all-teams.txt'
+    data = {}
+    with open(csvFilePath,) as csvf:
         csvReader = csv.DictReader(csvf)
         for rows in csvReader:
-            key = rows['Name']
+            key = rows['Serial Number']
             data[key] = rows
 
 # write data into a new json file
 
-    with open(jsonpath, 'w',  encoding='utf-8') as jsonFile:
+    with open(jsonpath, 'w') as jsonFile:
         # adding enugh spaces for readability.
-        jsonFile.write(json.dumps(data, indent=4))
+        jsonFile.write(json.dumps(data))
 
 read_csv()
 

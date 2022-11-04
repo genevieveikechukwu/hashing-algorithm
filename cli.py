@@ -19,8 +19,8 @@ import ast
 
 
 
-from response import read_csv
-from hashed import hash_json
+# from response import read_csv
+# from hashed import hash_json
 
 
 
@@ -55,11 +55,11 @@ from hashed import hash_json
 
 # using pandas library
 import pandas as pd
-read_csv() 
-hash_json()
+# read_csv() 
+# hash_json()
 
 # path to json file
-df = pd.read_json (r'./json_output/file.json')
+df = pd.read_json (r'./json_output/all-teams.txt')
 
 # path where it will be saved
-df.to_csv (r'./csv_output/filename.output.csv', index = 1)
+df.to_csv (r'./csv_output/nft-all-teams.csv', index = 1)
