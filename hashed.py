@@ -1,3 +1,5 @@
+# This file hashes the json and appends it to a column
+
 import hashlib
 import json
 
